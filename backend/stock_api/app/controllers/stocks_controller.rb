@@ -2,7 +2,7 @@ class StocksController < ApplicationController
 
 
     def index
-        # refresh_prices
+        refresh_prices
         scrape_and_save_yahoo_finance
         @stocks = Stock.all
         render json: @stocks, status: 200
@@ -31,13 +31,13 @@ class StocksController < ApplicationController
                 Stock.where(ticker: stock_ticker).first_or_initialize.tap do |s|
                     s.price = stock_price
                     s.change = stock_change
+                    s.name = stock_name
                     s.save
                 end
             end
     end
 
     def refresh_prices
-        Stock.all.delete_all 
+        Stock.all.delete_all unless (Stock.last.created_at.day == DateTime.now.new_offset(-5).day)
     end
-
 end
