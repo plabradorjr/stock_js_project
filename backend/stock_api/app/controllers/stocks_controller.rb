@@ -2,9 +2,11 @@ class StocksController < ApplicationController
 
 
     def index
-        # Stock.scrapeAndSaveYahooFinance
+        # refresh_prices
+        scrape_and_save_yahoo_finance
         @stocks = Stock.all
-        render :index
+        render json: @stocks, status: 200
+        
     end
 
     def show
@@ -14,8 +16,8 @@ class StocksController < ApplicationController
     private
 
      def scrape_and_save_yahoo_finance
-
-            doc = Nokogiri::HTML(open("https://finance.yahoo.com/gainers"))
+            site = "https://finance.yahoo.com/gainers"
+            doc = Nokogiri::HTML(open(site))
 
             table = doc.css("tbody")
             rows = table.css("tr.simpTblRow")
@@ -26,8 +28,16 @@ class StocksController < ApplicationController
                 stock_name = stock.css("td")[1].text
                 stock_price = stock.css("span")[0].text
 
-                Stock.create(name: stock_name, ticker: stock_ticker, price: stock_price, change: stock_change)
+                Stock.where(ticker: stock_ticker).first_or_initialize.tap do |s|
+                    s.price = stock_price
+                    s.change = stock_change
+                    s.save
+                end
             end
+    end
+
+    def refresh_prices
+        Stock.all.delete_all 
     end
 
 end
