@@ -2,7 +2,7 @@ class StocksController < ApplicationController
 
 
     def index
-        refresh_prices
+        refresh_database_daily
         scrape_and_save_yahoo_finance
         @stocks = Stock.all
         render json: @stocks, status: 200
@@ -10,12 +10,25 @@ class StocksController < ApplicationController
     end
 
     def show
-        
+        @stock = Stock.find(params[:id])
+        render json: @stock, status: 200
     end
+
+    def destroy
+        @stock = Stock.find(parms[:id])
+        @stock.delete
+
+        render json: {stockId: @stock.id}
+    end
+    
 
     private
 
-     def scrape_and_save_yahoo_finance
+    def stock_params
+        params.require(:stock).permit(:ticker, :price, :change, :name)
+    end
+
+    def scrape_and_save_yahoo_finance
             site = "https://finance.yahoo.com/gainers"
             doc = Nokogiri::HTML(open(site))
 
@@ -37,7 +50,7 @@ class StocksController < ApplicationController
             end
     end
 
-    def refresh_prices
+    def refresh_database_daily
         Stock.all.delete_all unless (Stock.last.created_at.day == DateTime.now.new_offset(-5).day)
     end
 end
