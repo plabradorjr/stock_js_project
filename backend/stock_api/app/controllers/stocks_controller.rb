@@ -5,8 +5,11 @@ class StocksController < ApplicationController
         refresh_database_daily
         scrape_and_save_yahoo_finance
         @stocks = Stock.all
-        render json: @stocks, status: 200
-        
+
+        respond_to do |f|
+            f.html {render :index}
+            f.json {render json: @stocks}
+        end
     end
 
     def show
