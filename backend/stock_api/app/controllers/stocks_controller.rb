@@ -6,10 +6,8 @@ class StocksController < ApplicationController
         scrape_and_save_yahoo_finance
         @stocks = Stock.all
 
-        respond_to do |f|
-            f.html {render :index}
-            f.json {render json: @stocks}
-        end
+        render json: @stocks, status: 200
+        
     end
 
     def show
