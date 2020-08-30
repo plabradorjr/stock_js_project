@@ -10,6 +10,16 @@ class StocksController < ApplicationController
         
     end
 
+    def new
+        @stock = Stock.new
+    end
+
+    def create
+
+        @stock = Stock.new(stock_params)
+        
+    end
+
     def show
         @stock = Stock.find(params[:id])
         render json: @stock, status: 200
@@ -20,6 +30,14 @@ class StocksController < ApplicationController
         @stock.delete
 
         render json: {stockId: @stock.id}
+    end
+
+    def edit
+        
+    end
+
+    def update
+        
     end
     
 
