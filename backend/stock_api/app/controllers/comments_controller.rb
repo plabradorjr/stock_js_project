@@ -9,13 +9,17 @@ class CommentsController < ApplicationController
     end
 
     def new
+        
         @comment = Comment.new
     end
 
     def create
+        @comment = Comment.new(content: params[:content])
+        @comment.stock = Stock.all.first
+        @comment.save
 
-        @comment = Comment.new(comment_params)
-        
+        all_stocks = Stock.all
+        render json: all_stocks
     end
 
     def show

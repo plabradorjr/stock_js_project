@@ -11,7 +11,7 @@ class StocksController < ApplicationController
     end
 
     def new
-        @stock = Stock.new
+        # @stock = Stock.new
     end
 
     def create
