@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_011616) do
+ActiveRecord::Schema.define(version: 2020_08_31_095833) do
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2020_08_20_011616) do
     t.integer "stock_id"
   end
 
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.integer "price"
@@ -27,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_011616) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "change"
+    t.integer "likes"
+    t.integer "market_id"
   end
 
 end

@@ -1,6 +1,7 @@
 class Stock < ApplicationRecord
 
     has_many :comments
+    belongs_to :market
 
     # def self.scrapeAndSaveYahooFinance
 
