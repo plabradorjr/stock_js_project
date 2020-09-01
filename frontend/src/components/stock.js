@@ -6,6 +6,7 @@ class Stock {
         this.price = obj.price
         this.change = obj.change
         this.comments = obj.comments
+        this.likes = obj.likes
     };
 }
 

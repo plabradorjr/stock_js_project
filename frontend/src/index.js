@@ -4,9 +4,9 @@ let stockInstances = []
 
 let fetchAndRenderStockToDOM = function(){
 
-    fetch('http://localhost:3000/stocks')
+    fetch('http://localhost:3000/markets')
     .then(res => res.json())
-    .then(data => data.forEach(function(stocksObject){
+    .then(data => data[0]['stocks'].forEach(function(stocksObject){
         let i = new Stock(stocksObject);
         stockInstances.push(i);
     })
@@ -14,7 +14,7 @@ let fetchAndRenderStockToDOM = function(){
 
 }
 
-// fetchAndInstantiateStocks();
+fetchAndRenderStockToDOM();
 
 let postComment = function(){
 
