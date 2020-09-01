@@ -6,4 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Market.create(name: "US")
+m = Market.create(name: "US")
+i = Stock.create(name: "TSLA")
+i.market = m
+i.save
