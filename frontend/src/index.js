@@ -14,17 +14,21 @@ let fetchAndCreateStockObjects = function(){
 
 fetchAndCreateStockObjects();
 
-let test = function(){
-    let parentnode = document.getElementById('parentnode');
+let printStocksToDOM = function(){
+    const parentnode = document.getElementById('parentnode');
 
-    let newCard = document.createElement('div');
-    newCard.classList.add('card', 'p-3', 'border-0', 'bg-gradient-warning', 'text-dark');
-    newCard.textContent = "yay it worked."
-    parentnode.appendChild(newCard);
+    for (let stock of stockInstances) {
+        let newCard = document.createElement('div');
+        newCard.classList.add('card', 'p-3', 'border-2', 'bg-white', 'text-dark', 'col-3');
+        newCard.innerHTML = '<p>' + `${stock.name} `+ '(' + `${stock.ticker}` + ')</p>' + '<small>Price: $' + `${stock.price}` + '</small>'
+                            + '<small>24hr % change: +' + `${stock.change}` + '%</small>'
+        parentnode.appendChild(newCard);
+    }
+        
 }
 
 document.getElementById("btn1").addEventListener("click", function(){
-    console.log(stockInstances[0]['name']);
+    printStocksToDOM();
 });
 
 

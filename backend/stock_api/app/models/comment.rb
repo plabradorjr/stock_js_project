@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
 
-    belongs_to :stock
+    belongs_to :market
 
 
 end
