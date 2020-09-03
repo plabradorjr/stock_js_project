@@ -1,5 +1,5 @@
-// console.log("hello i'm inside indexJs woot!")
 let stockInstances = []
+let commentInstances = []
 
 let fetchAndCreateStockObjects = function(){
 
@@ -29,7 +29,47 @@ let printStocksToDOM = function(){
 
 document.getElementById("btn1").addEventListener("click", function(){
     printStocksToDOM();
+    printCommentsToDOM();
 });
+
+
+// comments Objects
+let fetchAndCreateCommentObjects = function(){
+
+    fetch('http://localhost:3000/markets')
+    .then(res => res.json())
+    // .then(data => console.log(data[0]['comments']))
+    .then(data => data[0]['comments'].forEach(function(commentObj){
+        let newComment = new Comments(commentObj);
+        commentInstances.push(newComment);
+    })
+    )
+}
+
+fetchAndCreateCommentObjects();
+
+let printCommentsToDOM = function(){
+
+    let parentNodeComments = document.getElementById('parentnodeforcomments');
+    
+    for (let comment of commentInstances) {
+            let newPostCard = document.createElement('div');
+            newPostCard.classList.add('card', 'center', 'p-3', 'border-2', 'bg-dark', 'col-8');
+            newPostCard.innerHTML = '<p>🧐 ' + `${comment.name}` + ':</p>' + '<small>📈🚀 ' + `${comment.content}` + '</small>'
+                                
+            parentNodeComments.appendChild(newPostCard);
+    };
+}
+
+
+
+
+
+
+
+
+
+
 
 
 let postComment = function(name, comment){
@@ -45,8 +85,15 @@ let postComment = function(name, comment){
             content: comment
         }),
     })
-        .then(res => res.json())
-        .then(data => console.log(data));
+    let newPost = document.createElement('div');
+        newPost.classList.add('card', 'center', 'p-3', 'border-2', 'bg-dark', 'col-8');
+        newPost.innerHTML = '<p>👨‍🌾👩‍🌾 ' + name + ':</p>' + '<small>📈🚀 ' + comment + '</small>'
+        
+        let parentNodeCommentsPost = document.getElementById('parentnodeforcomments');
+
+        parentNodeCommentsPost.appendChild(newPost);    
+    // .then(res => res.json())
+        // .then(data => console.log(data));
 
 }
 
@@ -61,10 +108,6 @@ let handleSubmitClick = function(){
         postComment(inputNameValue, inputCommentValue)
         
     })    
-
-    
-    
 }
 
 handleSubmitClick();
-  

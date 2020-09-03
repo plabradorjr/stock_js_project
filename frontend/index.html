@@ -11,40 +11,45 @@
     <div class="container">
   
             <div class="row" id="parentnode">
-
                 <!-- JS renderd stocks goes here -->
-                
             </div>
+            <div class="row" id="parentnodeforcomments">
+                <!-- JS renderd comments goes here -->
+            </div>
+            
+            <div class="row">
+                <div class="col-10 center">
+                    <form>
+                        <div class="form-group">
+                            <label class="form-control-label">Post a comment:</label>
+                            <div class="input-group input-group-merge">
+                                <input type="name" class="form-control form-control-prepend comment-name" id="input-email" placeholder="Enter your name">
 
-            <div>
-                <form class="">
-                    <div class="form-group">
-                        <label class="form-control-label">Post a comment:</label>
-                        <div class="input-group input-group-merge">
-                            <input type="name" class="form-control form-control-prepend comment-name" id="input-email" placeholder="Enter your name">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="at-sign"></i></span>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <textarea type="content" class="form-control form-control-prepend comment-content" id="input-email" placeholder="Enter you comment"></textarea>
 
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i data-feather="at-sign"></i></span>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i data-feather="at-sign"></i></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="input-group input-group-merge">
-                            <textarea type="content" class="form-control form-control-prepend comment-content" id="input-email" placeholder="Enter you comment"></textarea>
-
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i data-feather="at-sign"></i></span>
-                            </div>
+                        <div class="mt-4">
+                            <button type="button" class="btn btn-block btn-primary fetch-new-input">Submit Alpha Leak 🚨</button>
                         </div>
-                    </div>
-                    <div class="mt-4">
-                        <button type="button" class="btn btn-block btn-primary fetch-new-input">Submit Alpha Leak 🚨</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
+
             
     </div>
     <br>
     <br>
     <script src="src/components/stock.js"></script>
+    <script src="src/components/comments.js"></script>
     <script src="src/index.js"></script>
 
 </body>
