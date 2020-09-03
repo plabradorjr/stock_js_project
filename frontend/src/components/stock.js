@@ -5,8 +5,6 @@ class Stock {
         this.ticker = obj.ticker
         this.price = obj.price
         this.change = obj.change
-        this.comments = obj.comments
-        this.likes = obj.likes
     };
 }
 

@@ -1,3 +1,3 @@
 class MarketSerializer < ActiveModel::Serializer
-  attributes :id, :name, :stocks
+  attributes :id, :name, :stocks, :comments
 end

@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 m = Market.create(name: "US")
-i = Stock.create(name: "TSLA")
+i = Stock.create(name: "TSLA", created_at: "2020-07-30 10:51:14")
 i.market = m
 i.save

@@ -14,12 +14,12 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(content: params[:content])
-        @comment.stock = Stock.all.first
+        @comment = Comment.new(content: params[:content], name: params[:name])
+        @comment.market = Market.all.first
         @comment.save
 
-        all_stocks = Stock.all
-        render json: all_stocks
+        all_stocks_and_comments = Market.all
+        render json: all_stocks_and_comments
     end
 
     def show
