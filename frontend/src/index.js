@@ -32,7 +32,7 @@ document.getElementById("btn1").addEventListener("click", function(){
 });
 
 
-let postComment = function(){
+let postComment = function(name, comment){
 
     fetch('http://localhost:3000/comments/', {
         method: 'POST',
@@ -41,8 +41,8 @@ let postComment = function(){
             'Access-Control-Allow-Origin':'*'
         },
         body: JSON.stringify({
-            name: "anon from index.js try1",
-            content: "yay post from index.js try1"
+            name: name,
+            content: comment
         }),
     })
         .then(res => res.json())
@@ -51,4 +51,20 @@ let postComment = function(){
 }
 
 
+let handleSubmitClick = function(){
+    
+    document.querySelector(".fetch-new-input").addEventListener('click', function(e){
+
+        let inputNameValue = document.querySelector(".comment-name").value
+        let inputCommentValue = document.querySelector(".comment-content").value;
+
+        postComment(inputNameValue, inputCommentValue)
+        
+    })    
+
+    
+    
+}
+
+handleSubmitClick();
   
