@@ -22,16 +22,21 @@ let printStocksToDOM = function(){
             let newCard = document.createElement('div');
             newCard.classList.add('card', 'p-3', 'border-2', 'bg-white', 'text-dark', 'col-3');
             newCard.innerHTML = '<p>' + `${stock.name} `+ '(' + `${stock.ticker}` + ')</p>' + '<small>Price: $' + `${stock.price}` + '</small>'
-                                + '<small>24hr % change: +' + `${stock.change}` + '%</small>'
+                                + '<small>24hr change: ' + `${stock.change}` + '</small>'
             parentnode.appendChild(newCard);
     };
 }
 
 document.getElementById("test").addEventListener("click", function(){
     removeLandingPage();
+    showHeaderPuts();
     printStocksToDOM();
     showViewCommentButton();
 });
+
+let showHeaderPuts = function(){
+    document.getElementById("puts-header").classList.toggle('invisible')
+}
 
 let removeLandingPage = function(){
     document.getElementById("topMeme").remove();

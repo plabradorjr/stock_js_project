@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_052852) do
+ActiveRecord::Schema.define(version: 2020_09_04_094153) do
 
   create_table "comments", force: :cascade do |t|
     t.string "name"
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2020_09_03_052852) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
-    t.integer "price"
+    t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.integer "change"
+    t.string "change"
     t.integer "likes"
     t.integer "market_id"
   end
