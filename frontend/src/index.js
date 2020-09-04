@@ -9,7 +9,7 @@ let fetchAndCreateStockObjects = function(){
         let i = new Stock(stocksObject);
         stockInstances.push(i);
     })
-    )
+    );
 }
 
 fetchAndCreateStockObjects();
@@ -27,19 +27,32 @@ let printStocksToDOM = function(){
     };
 }
 
-document.getElementById("btn1").addEventListener("click", function(){
+document.getElementById("test").addEventListener("click", function(){
+    removeLandingPage();
     printStocksToDOM();
-    printCommentsToDOM();
+    showViewCommentButton();
 });
 
+let removeLandingPage = function(){
+    document.getElementById("topMeme").remove();
+}
 
-// comments Objects
+let showViewCommentButton = function(){
+    document.getElementById("commentSection").classList.toggle('invisible');
+    document.getElementById("comment-button").addEventListener("click", function(){
+        printCommentsToDOM();
+        document.getElementById("commentSection").remove();
+        document.getElementById("postCommentOption").classList.toggle('invisible')
+    });
+    
+}
+
 let fetchAndCreateCommentObjects = function(){
 
-    fetch('http://localhost:3000/markets')
+    fetch('http://localhost:3000/comments')
     .then(res => res.json())
     // .then(data => console.log(data[0]['comments']))
-    .then(data => data[0]['comments'].forEach(function(commentObj){
+    .then(data => data.forEach(function(commentObj){
         let newComment = new Comments(commentObj);
         commentInstances.push(newComment);
     })
@@ -61,18 +74,10 @@ let printCommentsToDOM = function(){
     };
 }
 
-
-
-
-
-
-
-
-
-
-
-
 let postComment = function(name, comment){
+
+    document.querySelector(".comment-name").value = ''
+    document.querySelector(".comment-content").value = ''
 
     fetch('http://localhost:3000/comments/', {
         method: 'POST',
@@ -85,24 +90,21 @@ let postComment = function(name, comment){
             content: comment
         }),
     })
+
     let newPost = document.createElement('div');
-        newPost.classList.add('card', 'center', 'p-3', 'border-2', 'bg-dark', 'col-8');
-        newPost.innerHTML = '<p>👨‍🌾👩‍🌾 ' + name + ':</p>' + '<small>📈🚀 ' + comment + '</small>'
-        
-        let parentNodeCommentsPost = document.getElementById('parentnodeforcomments');
+    newPost.classList.add('card', 'center', 'p-3', 'border-2', 'bg-dark', 'col-8');
+    newPost.innerHTML = '<p>🤑 ' + name + ':</p>' + '<small>📈🚀 ' + comment + '</small>'
+    
+    let parentNodeCommentsPost = document.getElementById('parentnodeforcomments');
 
-        parentNodeCommentsPost.appendChild(newPost);    
-    // .then(res => res.json())
-        // .then(data => console.log(data));
-
+    parentNodeCommentsPost.appendChild(newPost);    
 }
-
 
 let handleSubmitClick = function(){
     
     document.querySelector(".fetch-new-input").addEventListener('click', function(e){
 
-        let inputNameValue = document.querySelector(".comment-name").value
+        let inputNameValue = document.querySelector(".comment-name").value;
         let inputCommentValue = document.querySelector(".comment-content").value;
 
         postComment(inputNameValue, inputCommentValue)

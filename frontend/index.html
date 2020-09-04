@@ -3,54 +3,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stonk Api Project</title>
-    <link rel="stylesheet" href="../frontend/styles/quick-website-dark.css">
+        <link rel="stylesheet" href="../frontend/styles/quick-website-dark.css">
 </head>
 <body>
-    <p>hello world</p>
-    <button id="btn1">click me</button>
     <div class="container">
-  
-            <div class="row" id="parentnode">
-                <!-- JS renderd stocks goes here -->
-            </div>
-            <div class="row" id="parentnodeforcomments">
-                <!-- JS renderd comments goes here -->
-            </div>
-            
-            <div class="row">
-                <div class="col-10 center">
-                    <form>
-                        <div class="form-group">
-                            <label class="form-control-label">Post a comment:</label>
-                            <div class="input-group input-group-merge">
-                                <input type="name" class="form-control form-control-prepend comment-name" id="input-email" placeholder="Enter your name">
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i data-feather="at-sign"></i></span>
-                                </div>
-                            </div>
-                            <div class="input-group input-group-merge">
-                                <textarea type="content" class="form-control form-control-prepend comment-content" id="input-email" placeholder="Enter you comment"></textarea>
-
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i data-feather="at-sign"></i></span>
-                                </div>
-                            </div>
+        <section id="topMeme" class="slice py-5 py-lg-7">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 col-lg-6 order-md-2 mb-5 mb-md-0">
+                        <!-- Card -->
+                        <div class="card border-0 shadow-lg zindex-100 mb-0">
+                            <figure>
+                                <img id="test" alt="Image placeholder" src="../frontend/img/point_meme_dolla.png" class="card-img">
+                            </figure>
+                            
                         </div>
-                        <div class="mt-4">
-                            <button type="button" class="btn btn-block btn-primary fetch-new-input">Submit Alpha Leak 🚨</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 order-md-1 pr-md-5">
+                        <!-- Surtitle -->
+                        <h6 class="">Trade worse than the worst Robinhood trader.</h6>
+                        <!-- Heading -->
+                        <h1 class="h1 mb-4">
+                            Introducing <strong>RobinDump</strong>.
+                        </h1>
+                        <!-- Text -->
+                        <p class="lead text-muted">
+                            A low effort, zero algorithm, and absolutely useless AI.
+                        </p>
+                        <p class="lead text-muted">
+                            click the dolla sign to generate AI "puts" leak ➡️
+                        </p>
+                        
+                    </div>
                 </div>
             </div>
+            
+        </section>
+
+       
+
+        <div class="row pt-3" id="parentnode">
+            <!-- JS renderd stocks goes here -->
+        </div>
+
+        <section id="commentSection" class="invisible slice py-5 py-lg-7">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 col-lg-6 order-md-2 mb-5 mb-md-0">
+                        <!-- Card -->
+                        <div class="card border-0 shadow-lg zindex-100 mb-0">
+                            <figure>
+                                <img alt="Image placeholder" src="../frontend/img/chart_go_up.gif" class="card-img">
+                            </figure>
+                           
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 order-md-1 pr-md-5">
+                        <!-- Heading -->
+                        <h1 class="h1 mb-4">
+                            Today's <strong>Pump...</strong>
+                        </h1>
+                        <!-- Text -->
+                        <p class="lead text-muted">
+                            ... is tomorrow's dump. Financially ruin yourself. All-in yolo bets.
+                        </p>
+                        <div>
+                            <p id="comment-button" class="btn btn-neutral d-lg-inline-block">View Comments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <div class="row" id="parentnodeforcomments">
+            <!-- JS renderd comments goes here -->
+        </div>
+        
+        <div class="row">
+            <div class="col-10 center">
+                <form id="postCommentOption" class="invisible">
+                    <div class="form-group">
+                        <label class="form-control-label">Post a comment:</label>
+                        <div class="input-group input-group-merge">
+                            <input type="name" class="form-control form-control-prepend comment-name" id="input-email" placeholder="Enter your name">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i data-feather="at-sign"></i></span>
+                            </div>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <textarea type="content" class="form-control form-control-prepend comment-content" id="input-email" placeholder="Enter you comment"></textarea>
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i data-feather="at-sign"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-block btn-primary fetch-new-input">Submit Alpha Leak 🚨</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
             
     </div>
     <br>
     <br>
+
     <script src="src/components/stock.js"></script>
     <script src="src/components/comments.js"></script>
     <script src="src/index.js"></script>
+
 
 </body>
 </html>
