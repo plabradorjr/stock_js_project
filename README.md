@@ -27,14 +27,14 @@ The code is available as open source under the terms of the MIT License.
 # Specs
 
 JavaScript
-[x] Use classes and functions to organize your code into reusable pieces.
-[x] Translate JSON responses into JavaScript model objects using ES6 class or constructor function syntax.
-[x] Use ES6 features when appropriate (e.g. arrow functions, let & const, rest and spread syntax).
-[x] Your application should have at least 3 AJAX calls, covering at least 2 of Create, Read, Update, and Delete (CRUD).
-[x] Your client-side JavaScript code must use fetch with the appropriate HTTP verb, and your Rails API should use RESTful conventions.
+- [x] Use classes and functions to organize your code into reusable pieces.
+- [x] Translate JSON responses into JavaScript model objects using ES6 class or constructor function syntax.
+- [x] Use ES6 features when appropriate (e.g. arrow functions, let & const, rest and spread syntax).
+- [x] Your application should have at least 3 AJAX calls, covering at least 2 of Create, Read, Update, and Delete (CRUD).
+- [x] Your client-side JavaScript code must use fetch with the appropriate HTTP verb, and your Rails API should use RESTful conventions.
 
 Rails
-[x] Follow Rails MVC and RESTful conventions. That means, for example, that a request GET /puppies ought to be handled by the PuppiesController, fetch puppies from the database using a Puppy Active Record model, and return a list of puppies as JSON.
-[x] The domain model served by the Rails backend must include a resource with at least one has-many relationship
-[x] Well-named variables and methods
-[x] Short, single-purpose methods
+- [x] Follow Rails MVC and RESTful conventions. That means, for example, that a request GET /puppies ought to be handled by the PuppiesController, fetch puppies from the database using a Puppy Active Record model, and return a list of puppies as JSON.
+- [x] The domain model served by the Rails backend must include a resource with at least one has-many relationship
+- [x] Well-named variables and methods
+- [x] Short, single-purpose methods
