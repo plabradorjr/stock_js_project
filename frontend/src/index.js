@@ -1,19 +1,16 @@
-document.getElementById("dollar-button").addEventListener("click", function(){
+document.getElementById("dollar-button").addEventListener("click", () => {
     removeLandingPage();
     showHeaderPuts();
     printStocksToDOM();
     showViewCommentButton();
 });
 
-let showHeaderPuts = function(){
-    document.getElementById("puts-header").classList.toggle('invisible')
-}
+let showHeaderPuts = () => document.getElementById("puts-header").classList.toggle('invisible');
 
-let removeLandingPage = function(){
-    document.getElementById("topMeme").remove();
-}
 
-let showViewCommentButton = function(){
+let removeLandingPage = () => document.getElementById("topMeme").remove();
+
+let showViewCommentButton = () => {
     document.getElementById("commentSection").classList.toggle('invisible');
     document.getElementById("comment-button").addEventListener("click", function(){
         printCommentsToDOM();
@@ -23,7 +20,7 @@ let showViewCommentButton = function(){
     
 }
 
-let handleSubmitClick = function(){
+let handleSubmitClick = () => {
     
     document.querySelector(".fetch-new-input").addEventListener('click', function(e){
 

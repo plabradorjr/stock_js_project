@@ -7,7 +7,7 @@ class Comments {
     };
 }
 
-let fetchAndCreateCommentObjects = function(){
+let fetchAndCreateCommentObjects = () => {
 
     fetch('http://localhost:3000/comments')
     .then(res => res.json())
@@ -21,7 +21,7 @@ let fetchAndCreateCommentObjects = function(){
 
 fetchAndCreateCommentObjects();
 
-let printCommentsToDOM = function(){
+let printCommentsToDOM = () => {
 
     let parentNodeComments = document.getElementById('parentnodeforcomments');
     
@@ -34,7 +34,7 @@ let printCommentsToDOM = function(){
     };
 }
 
-let postComment = function(name, comment){
+let postComment = (name, comment) => {
 
     document.querySelector(".comment-name").value = ''
     document.querySelector(".comment-content").value = ''

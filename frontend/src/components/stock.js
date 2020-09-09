@@ -10,7 +10,7 @@ class Stock {
     };
 }
 
-let fetchAndCreateStockObjects = function(){
+let fetchAndCreateStockObjects = () => {
 
     fetch('http://localhost:3000/markets')
     .then(res => res.json())
@@ -23,7 +23,7 @@ let fetchAndCreateStockObjects = function(){
 
 fetchAndCreateStockObjects();
 
-let printStocksToDOM = function(){
+let printStocksToDOM = () => {
 
     const parentnode = document.getElementById('parentnode');
     
