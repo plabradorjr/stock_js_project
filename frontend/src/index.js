@@ -27,8 +27,11 @@ let handleSubmitClick = () => {
         let inputNameValue = document.querySelector(".comment-name").value;
         let inputCommentValue = document.querySelector(".comment-content").value;
 
-        postComment(inputNameValue, inputCommentValue)
-        
+        if (inputCommentValue == ''){
+            alert('comment cannot be blank');
+        } else {
+            postComment(inputNameValue, inputCommentValue)
+        }      
     })    
 }
 
