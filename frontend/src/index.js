@@ -7,7 +7,6 @@ document.getElementById("dollar-button").addEventListener("click", () => {
 
 let showHeaderPuts = () => document.getElementById("puts-header").classList.toggle('invisible');
 
-
 let removeLandingPage = () => document.getElementById("topMeme").remove();
 
 let showViewCommentButton = () => {
@@ -17,7 +16,6 @@ let showViewCommentButton = () => {
         document.getElementById("commentSection").remove();
         document.getElementById("postCommentOption").classList.toggle('invisible')
     });
-    
 }
 
 let handleSubmitClick = () => {
