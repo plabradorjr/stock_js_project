@@ -1,4 +1,4 @@
-let stockInstances = []
+// let Stock.all = []
 
 class Stock {
     constructor(obj) {
@@ -7,16 +7,30 @@ class Stock {
         this.ticker = obj.ticker
         this.price = obj.price
         this.change = obj.change
+        Stock.all.push(this);
+
     };
+
+    render() {
+        let newCard = document.createElement('div');
+            newCard.classList.add('card', 'p-3', 'border-2', 'bg-white', 'text-dark', 'col-3');
+            newCard.innerHTML = '<p>' + `${this.name} `+ '(' + `${this.ticker}` + ')</p>' + '<small>Price: $' + `${this.price}` + '</small>'
+                                + '<small>24hr change: ' + `${this.change}` + '</small>'
+
+        return newCard;
+    }
+
 }
+
+Stock.all = []
 
 let fetchAndCreateStockObjects = () => {
 
     fetch('http://localhost:3000/markets')
     .then(res => res.json())
     .then(data => data[0]['stocks'].forEach(function(stocksObject){
-        let i = new Stock(stocksObject);
-        stockInstances.push(i);
+        new Stock(stocksObject);
+        // stockInstances.push(i);
     })
     );
 }
@@ -25,13 +39,14 @@ fetchAndCreateStockObjects();
 
 let printStocksToDOM = () => {
 
-    const parentnode = document.getElementById('parentnode');
+    const parentNode = document.getElementById('parentnode');
     
-    for (let stock of stockInstances) {
-            let newCard = document.createElement('div');
-            newCard.classList.add('card', 'p-3', 'border-2', 'bg-white', 'text-dark', 'col-3');
-            newCard.innerHTML = '<p>' + `${stock.name} `+ '(' + `${stock.ticker}` + ')</p>' + '<small>Price: $' + `${stock.price}` + '</small>'
-                                + '<small>24hr change: ' + `${stock.change}` + '</small>'
-            parentnode.appendChild(newCard);
-    };
+    // for (let stock of Stock.all) {
+       // parentnode.appendChild(newCard);
+    //};
+
+    Stock.all.forEach(stock => {
+        let renderElement = stock.render()
+        parentNode.appendChild(renderElement)
+    })
 }
